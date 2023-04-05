@@ -6,9 +6,9 @@ data ShowView = ShowView { post :: Post }
 instance View ShowView where
     html ShowView { .. } = [hsx|
         {breadcrumb}
-        <h1>Show Post</h1>
-        <p>{post}</p>
-
+        <h1 class="display-4">{post.title}</h1>
+        <p class="fs-6 text-muted">Last updated {post.updatedAt |> timeAgo}</p>
+        <p>{post.body}</p>
     |]
         where
             breadcrumb = renderBreadcrumb
